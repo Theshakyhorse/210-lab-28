@@ -57,6 +57,8 @@ int main() {
             [age](Goat g) {
                 return g.get_age() > age;
             });
+            cout << endl << "At least 1 goat is older: " << (result ? "True" : "False");
+            cout << endl;
         }
         choice = main_menu();
     }
