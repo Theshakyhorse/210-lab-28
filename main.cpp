@@ -5,6 +5,7 @@
 #include <set>
 #include <algorithm>
 #include <numeric> //for accumulate
+#include <random> //for shuffle
 #include "Goat.h"
 using namespace std;
 
@@ -37,7 +38,7 @@ int main() {
     cout << setw(W) << "*** GOAT MANAGER 3001***" << endl;
     choice = main_menu();
     //loop to keep program going until user quits
-    while (choice != 8) {
+    while (choice != 9) {
         if (choice == 1) {
             add_goat(goats, names, colors);
         }
@@ -71,6 +72,10 @@ int main() {
         if (choice == 7) {
             reverse(goats.begin(), goats.end());
         }
+        if (choice == 8) {
+            shuffle(goats.begin(), goats.end(),
+            default_random_engine());
+        }
         choice = main_menu();
     }
     return 0;
@@ -86,12 +91,13 @@ int main_menu() {
     cout << "[5] Is there any goat older than you" << endl;
     cout << "[6] Sum ages" << endl;
     cout << "[7] Reverse list" << endl;
-    cout << "[8] Quit" << endl;
+    cout << "[8] Shuffle list" << endl;
+    cout << "[9] Quit" << endl;
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice < 0) || (choice > 8)) {
+    while ((choice < 0) || (choice > 9)) {
         cout << "Please choose a valid choice: " << endl;
         cin >> choice;
         cout << endl;
