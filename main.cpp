@@ -37,7 +37,7 @@ int main() {
     cout << setw(W) << "*** GOAT MANAGER 3001***" << endl;
     choice = main_menu();
     //loop to keep program going until user quits
-    while (choice != 7) {
+    while (choice != 8) {
         if (choice == 1) {
             add_goat(goats, names, colors);
         }
@@ -68,6 +68,9 @@ int main() {
             });
             cout << "Sum of all ages of goats equals: " << sum << endl;
         }
+        if (choice == 7) {
+            reverse(goats.begin(), goats.end());
+        }
         choice = main_menu();
     }
     return 0;
@@ -82,12 +85,13 @@ int main_menu() {
     cout << "[4] Clear list of goats" << endl;
     cout << "[5] Is there any goat older than you" << endl;
     cout << "[6] Sum ages" << endl;
-    cout << "[7] Quit" << endl;
+    cout << "[7] Reverse list" << endl;
+    cout << "[8] Quit" << endl;
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice < 0) || (choice > 7)) {
+    while ((choice < 0) || (choice > 8)) {
         cout << "Please choose a valid choice: " << endl;
         cin >> choice;
         cout << endl;
