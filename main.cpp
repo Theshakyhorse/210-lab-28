@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <set>
+#include <algorithm>
 #include "Goat.h"
 using namespace std;
 
@@ -35,7 +36,7 @@ int main() {
     cout << setw(W) << "*** GOAT MANAGER 3001***" << endl;
     choice = main_menu();
     //loop to keep program going until user quits
-    while (choice != 4) {
+    while (choice != 5) {
         if (choice == 1) {
             add_goat(goats, names, colors);
         }
@@ -44,6 +45,9 @@ int main() {
         }
         if (choice == 3) {
             display_trip(goats);
+        }
+        if (choice == 4) {
+            goats.clear();
         }
         choice = main_menu();
     }
@@ -56,7 +60,8 @@ int main_menu() {
     cout << "[1] Add a goat" << endl;
     cout << "[2] Delete a goat" << endl;
     cout << "[3] List goats" << endl;
-    cout << "[4] Quit" << endl;
+    cout << "[4] Clear list of goats" << endl;
+    cout << "[5] Quit" << endl;
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
