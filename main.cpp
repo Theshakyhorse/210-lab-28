@@ -66,8 +66,8 @@ int main_menu() {
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice != 1) && (choice != 2) && (choice != 3) && (choice != 4)) {
-        cout << "Please choose a valid choice of 1, 2, 3, or 4" << endl;
+    while ((choice < 0) || (choice > 5)) {
+        cout << "Please choose a valid choice: " << endl;
         cin >> choice;
         cout << endl;
     }
