@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <set>
 #include <algorithm>
+#include <numeric> //for accumulate
 #include "Goat.h"
 using namespace std;
 
@@ -36,7 +37,7 @@ int main() {
     cout << setw(W) << "*** GOAT MANAGER 3001***" << endl;
     choice = main_menu();
     //loop to keep program going until user quits
-    while (choice != 6) {
+    while (choice != 7) {
         if (choice == 1) {
             add_goat(goats, names, colors);
         }
@@ -60,6 +61,13 @@ int main() {
             cout << endl << "At least 1 goat is older: " << (result ? "True" : "False");
             cout << endl;
         }
+        if (choice == 6) {
+            int sum = accumulate(goats.begin(), goats.end(), 0,
+            [](int total, Goat g) {
+                return total + g.get_age();
+            });
+            cout << "Sum of all ages of goats equals: " << sum << endl;
+        }
         choice = main_menu();
     }
     return 0;
@@ -73,12 +81,13 @@ int main_menu() {
     cout << "[3] List goats" << endl;
     cout << "[4] Clear list of goats" << endl;
     cout << "[5] Is there any goat older than you" << endl;
-    cout << "[6] Quit" << endl;
+    cout << "[6] Sum ages" << endl;
+    cout << "[7] Quit" << endl;
     cout << "Choice --> ";
     cin >> choice;
     cout << endl;
     //validates
-    while ((choice < 0) || (choice > 6)) {
+    while ((choice < 0) || (choice > 7)) {
         cout << "Please choose a valid choice: " << endl;
         cin >> choice;
         cout << endl;
